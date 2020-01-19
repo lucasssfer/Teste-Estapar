@@ -1,0 +1,40 @@
+﻿@model Estapar.Models.Manobra
+
+@{
+    ViewData["Title"] = "Apagar Manobra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Apagar Manobra</h1>
+
+<h3>Você tem certeza que deseja apagar esta manobra?</h3>
+<div>
+    <h4>Manobra</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataManobra)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataManobra)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Manobrista)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Manobrista.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Veiculo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Veiculo.Marca)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ManobraId" />
+        <input type="submit" value="Apagar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar para lista</a>
+    </form>
+</div>

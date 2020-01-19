@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Estapar.Models.Manobra>
+
+@{
+    ViewData["Title"] = "Lista de manobras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista de manobras</h1>
+
+<p>
+    <a asp-action="Create">Criar nova</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataManobra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manobrista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Veiculo.Placa)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataManobra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manobrista.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Veiculo.Descricao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ManobraId">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.ManobraId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ManobraId">Apagar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

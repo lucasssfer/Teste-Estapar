@@ -1,0 +1,37 @@
+﻿@model Estapar.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Detalhes do veículo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhes do veículo</h1>
+
+<div>
+    <h4>Veiculo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Placa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VeiculoId">Alterar</a> |
+    <a asp-action="Index">Voltar para lista</a>
+</div>
