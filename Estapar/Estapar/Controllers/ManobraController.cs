@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Estapar.Models;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Estapar.Controllers
 {
@@ -48,7 +49,7 @@ namespace Estapar.Controllers
         // GET: Manobra/Create
         public IActionResult Create()
         {
-            ViewData["ManobristaId"] = new SelectList(_context.Manobrista, "ManobristaId", "Cpf");
+            ViewData["ManobristaId"] = new SelectList(_context.Manobrista, "ManobristaId", "Name");
             ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "VeiculoId", "Marca");
             return View();
         }
@@ -84,7 +85,7 @@ namespace Estapar.Controllers
             {
                 return NotFound();
             }
-            ViewData["ManobristaId"] = new SelectList(_context.Manobrista, "ManobristaId", "Cpf", manobra.ManobristaId);
+            ViewData["ManobristaId"] = new SelectList(_context.Manobrista, "ManobristaId", "Name", manobra.ManobristaId);
             ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "VeiculoId", "Marca", manobra.VeiculoId);
             return View(manobra);
         }

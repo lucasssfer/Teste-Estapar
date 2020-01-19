@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -75,6 +76,7 @@ namespace Estapar.Models
                 entity.Property(e => e.Placa)
                     .HasMaxLength(7)
                     .IsUnicode(false);
+
             });
 
             OnModelCreatingPartial(modelBuilder);

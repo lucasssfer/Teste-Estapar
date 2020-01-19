@@ -22,9 +22,10 @@ namespace Estapar.Models
         public string Modelo { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [Display(Name = "Marca/Modelo/Placa")]
+        [Display(Name = "Placa")]
         public string Placa { get; set; }
 
+        [Display(Name = "Marca/Modelo/Placa")]
         public string Descricao
         {
             get

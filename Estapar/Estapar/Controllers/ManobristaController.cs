@@ -123,8 +123,7 @@ namespace Estapar.Controllers
                 return NotFound();
             }
 
-            var manobrista = await _context.Manobrista
-                .FirstOrDefaultAsync(m => m.ManobristaId == id);
+            var manobrista = await _context.Manobrista.FirstOrDefaultAsync(m => m.ManobristaId == id);
             if (manobrista == null)
             {
                 return NotFound();
@@ -138,6 +137,14 @@ namespace Estapar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
+            var manobra = _context.Manobra.Where(x => x.ManobristaId == id);
+            if (manobra.Any())
+            {
+                ViewData["Message"] = "Esse manobrista não pode ser apagado pois existe uma manobra para ele.";
+                var m = await _context.Manobrista.FirstOrDefaultAsync(m => m.ManobristaId == id);
+                return View(m);
+            }
+
             var manobrista = await _context.Manobrista.FindAsync(id);
             _context.Manobrista.Remove(manobrista);
             await _context.SaveChangesAsync();
